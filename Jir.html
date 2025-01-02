@@ -1,0 +1,263 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div id="login-screen" class="container">
+        <div class="login-box">
+            <div class="text-center mb-8">
+                <h1 class="title">Login</h1>
+            </div>
+            <div class="mb-4">
+                <label class="label">Nama:</label>
+                <input type="text" id="login-nama" class="input" placeholder="Masukkan nama">
+            </div>
+            <div class="mb-4">
+              
+                <label class="label">Deskripsi:</label>
+                <input type="text" id="login-deskripsi" class="input" placeholder="Masukkan deskripsi">
+            </div>
+            <div class="text-center mt-4">
+                <button onclick="showMainScreen()" class="button">
+                    Login
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-screen" class="container hidden">
+        <div class="header">
+            <div class="relative">
+                <button onclick="toggleMenu()" class="menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div id="menu" class="menu hidden">
+                    <button onclick="showMonitoring()" class="menu-item">Monitoring Sensor</button>
+                    <button onclick="showKonfigurasi()" class="menu-item">Konfigurasi</button>
+                    <button onclick="showPakanOtomatis()" class="menu-item">Pakan Otomatis</button>
+                    <button onclick="showPemberianObat()" class="menu-item">Pemberian Obat</button>
+                    <button onclick="showProfile()" class="menu-item">Saya</button>
+                </div>
+            </div>
+            <h1 class="title">Monitoring App</h1>
+        </div>
+
+        <div id="monitoring">
+            <div class="grid">
+                <div class="card red">
+                    <i class="fas fa-thermometer-half icon"></i>
+                    <div>
+                        <h2 class="card-title">Suhu</h2>
+                        <p>Current Temperature: 25°C</p>
+                    </div>
+                </div>
+                <div class="card green">
+                    <i class="fas fa-vial icon"></i>
+                    <div>
+                        <h2 class="card-title">pH</h2>
+                        <p>Current pH Level: 7.2</p>
+                    </div>
+                </div>
+                <div class="card blue">
+                    <i class="fas fa-water icon"></i>
+                    <div>
+                        <h2 class="card-title">Turbidity</h2>
+                        <p>Current Turbidity: 5 NTU</p>
+                    </div>
+                </div>
+                <div class="card purple">
+                    <i class="fas fa-flask icon"></i>
+                    <div>
+                        <h2 class="card-title">Kepadatan Zat</h2>
+                        <p>Current Density: 1.02 g/cm³</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="konfigurasi" class="hidden">
+            <div class="text-center mb-8">
+                <h2 class="title">Konfigurasi</h2>
+            </div>
+            <div class="grid">
+                <div class="config-card">
+                    <h3 class="config-title">Aerator</h3>
+                    <label class="label">Waktu Nyala (menit):</label>
+                    <input type="number" class="input" placeholder="Masukkan waktu nyala">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+                <div class="config-card">
+                    <h3 class="config-title">Pemanas Air</h3>
+                    <label class="label">Volume Air (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan volume air">
+                    <label class="label mt-4">Waktu Pemanasan (menit):</label>
+                    <input type="number" class="input" placeholder="Masukkan waktu pemanasan">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+                <div class="config-card">
+                    <h3 class="config-title">Pelarut pH</h3>
+                    <label class="label">Volume Air yang Dilarutkan (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan volume air yang dilarutkan">
+                    <label class="label mt-4">Volume Air Biasa (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan volume air biasa">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+                <div class="config-card">
+                    <h3 class="config-title">Pompa Air</h3>
+                    <label class="label">Waktu Nyala (menit):</label>
+                    <input type="number" class="input" placeholder="Masukkan waktu nyala">
+                    <label class="label mt-4">Kecepatan Nyala:</label>
+                    <input type="number" class="input" placeholder="Masukkan kecepatan nyala">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pakan-otomatis" class="hidden">
+            <div class="text-center mb-8">
+                <h2 class="title">Pakan Otomatis</h2>
+            </div>
+            <div class="grid">
+                <div class="config-card">
+                    <h3 class="config-title">Pakan Otomatis</h3>
+                    <label class="label">Jumlah Pakan (g):</label>
+                    <input type="number" class="input" placeholder="Masukkan jumlah pakan">
+                    <label class="label mt-4">Arah Pelemparan (0/180):</label>
+                    <input type="number" class="input" placeholder="Masukkan arah pelemparan">
+                    <label class="label mt-4">Jarak Pelemparan (m):</label>
+                    <input type="number" class="input" placeholder="Masukkan jarak pelemparan">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pemberian-obat" class="hidden">
+            <div class="text-center mb-8">
+                <h2 class="title">Pemberian Obat</h2>
+            </div>
+            <div class="grid">
+                <div class="config-card">
+                    <h3 class="config-title">Pemberian Obat</h3>
+                    <label class="label">Obat A (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan jumlah Obat A">
+                    <label class="label mt-4">Obat B (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan jumlah Obat B">
+                    <label class="label mt-4">Obat C (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan jumlah Obat C">
+                    <label class="label mt-4">Air (ml):</label>
+                    <input type="number" class="input" placeholder="Masukkan jumlah Air">
+                    <div class="text-center mt-4">
+                        <button class="button">
+                            Kirim
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="profile" class="hidden">
+            <div class="text-center mb-8">
+                <h2 class="title">Profil Saya</h2>
+            </div>
+            <div class="profile-box">
+                <div class="mb-4">
+                    <label class="label">Nama:</label>
+                    <input type="text" id="profile-nama" class="input">
+                </div>
+                <div class="mb-4">
+                    <label class="label">Deskripsi:</label>
+                    <input type="text" id="profile-deskripsi" class="input">
+                </div>
+                <div class="text-center mt-4">
+                    <button onclick="saveProfile()" class="button">
+                        Simpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMainScreen() {
+            const nama = document.getElementById('login-nama').value;
+            const deskripsi = document.getElementById('login-deskripsi').value;
+
+            document.getElementById('profile-nama').value = nama;
+            document.getElementById('profile-deskripsi').value = deskripsi;
+
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('main-screen').classList.remove('hidden');
+            showMonitoring();
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showInterface(interfaceId) {
+            document.getElementById('monitoring').classList.add('hidden');
+            document.getElementById('konfigurasi').classList.add('hidden');
+            document.getElementById('pakan-otomatis').classList.add('hidden');
+            document.getElementById('pemberian-obat').classList.add('hidden');
+            document.getElementById('profile').classList.add('hidden');
+            document.getElementById(interfaceId).classList.remove('hidden');
+        }
+
+        function showMonitoring() {
+            showInterface('monitoring');
+        }
+
+        function showKonfigurasi() {
+            showInterface('konfigurasi');
+        }
+
+        function showPakanOtomatis() {
+            showInterface('pakan-otomatis');
+        }
+
+        function showPemberianObat() {
+            showInterface('pemberian-obat');
+        }
+
+        function showProfile() {
+            showInterface('profile');
+        }
+
+        function saveProfile() {
+            const nama = document.getElementById('profile-nama').value;
+            const deskripsi = document.getElementById('profile-deskripsi').value;
+
+            document.getElementById('login-nama').value = nama;
+            document.getElementById('login-deskripsi').value = deskripsi;
+
+            alert('Profil berhasil disimpan!');
+        }
+    </script>
+     <script src="Script.js"></script>
+</body>
+</html>
