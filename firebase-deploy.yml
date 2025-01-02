@@ -1,0 +1,28 @@
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main  # Atau branch lain yang kamu inginkan
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout kode dari repositori
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install Firebase CLI
+      - name: Set up Firebase CLI
+        run: |
+          curl -sL https://firebase.tools | bash
+          firebase --version
+
+      # Login ke Firebase menggunakan token yang disimpan di GitHub Secrets
+      - name: Login to Firebase
+        run: echo ${{ secrets.AYAM_KEMANGI_GITU }} | firebase login:ci --token
+
+      # Deploy ke Firebase Hosting
+      - name: Deploy to Firebase Hosting
+        run: firebase deploy --only hosting
